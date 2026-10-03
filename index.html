@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff6a00"><meta name="description" content="Consulte produtos, preços e disponibilidade do Mercadinho Pontal da Serra. Mercado autônomo aberto 24 horas.">
+  <title>Mercadinho Pontal da Serra • Catálogo 24h</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+  <script src="products.js" defer></script><script src="data-source.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#catalogo">Ir para os produtos</a>
+  <div class="demo-bar">CATÁLOGO DEMONSTRATIVO <span>• Preços e disponibilidade fictícios</span></div>
+  <header class="header"><div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="Pontal da Serra — início"><img src="assets/icon.svg" alt="" width="46" height="46"><span><small>MERCADINHO</small><strong>PONTAL DA SERRA</strong></span></a>
+    <nav aria-label="Navegação principal"><a href="#catalogo" class="desktop-link">Catálogo</a><button class="desktop-link text-button" id="nav-offers">Ofertas</button><button class="list-button" id="open-list"><span class="list-icon" aria-hidden="true">☷</span> Minha lista <span class="count" id="list-count">0</span></button></nav>
+  </div></header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><div class="open-badge"><span></span> ABERTO 24 HORAS <b>Todos os dias</b></div><h1 id="hero-title">Seu mercadinho.<br><em>Na sua hora.</em></h1><p>Veja o que tem antes de sair de casa.</p><a href="#catalogo" class="hero-link">Explorar catálogo <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-photo" role="img" aria-label="Interior do Mercadinho Pontal da Serra"><div class="photo-label">PERTINHO DE VOCÊ <strong>Praticidade, dia e noite.</strong></div></div>
+    </section>
+    <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+      <div class="intro-row"><div><span class="eyebrow">O QUE VOCÊ PRECISA HOJE?</span><h2 id="catalog-title">Encontre no Pontal</h2></div><span class="catalog-note">Consulta rápida. Sem cadastro.</span></div>
+      <div class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><label class="sr-only" for="search">Buscar produto ou código</label><input id="search" type="search" placeholder="Busque por produto ou código…" autocomplete="off"><kbd class="desktop-link">BUSCAR</kbd></div>
+      <div class="categories" id="categories" role="group" aria-label="Categorias"></div>
+      <div class="filter-row"><div class="filters"><label><input type="checkbox" id="only-available"> Somente disponíveis</label><button id="offers-filter" class="offer-toggle" aria-pressed="false">% Em oferta</button><label class="sr-only" for="availability">Disponibilidade</label><select id="availability"><option value="all">Todos os status</option><option value="available">Disponível</option><option value="low">Poucas unidades</option><option value="unavailable">Indisponível</option></select></div><label class="sort-label">Ordenar <select id="sort"><option value="featured">Destaques</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="name">Nome A–Z</option></select></label></div>
+      <div class="results-line"><p id="results" role="status" aria-live="polite">Carregando produtos…</p><button id="reset-filters" class="text-button" hidden>Limpar filtros</button></div>
+      <p id="connection" class="notice" hidden></p>
+      <div id="product-grid" class="product-grid" aria-label="Produtos"></div>
+      <div id="empty" class="empty" hidden><span aria-hidden="true">⌕</span><h3>Nenhum produto por aqui</h3><p>Experimente outro nome ou remova os filtros.</p><button id="empty-reset" class="primary">Ver todos os produtos</button></div>
+      <div id="load-error" class="empty" hidden><h3>Não foi possível carregar o catálogo</h3><p>Confira sua conexão e tente novamente.</p><button id="retry" class="primary">Tentar novamente</button></div>
+    </section>
+    <section class="list-banner"><div class="banner-icon" aria-hidden="true">☷</div><div><h2>Tem o que eu preciso?</h2><p>Monte sua lista e confira a disponibilidade antes de ir.</p></div><button class="primary" id="banner-list">Conferir minha lista <span aria-hidden="true">+</span></button></section>
+    <section class="install" id="install-section"><div><strong>Seu mercadinho na tela inicial</strong><p>Abra o catálogo com um toque, a qualquer hora.</p></div><button class="outline" id="install-button">Como instalar</button></section>
+  </main>
+  <footer><div class="wrap footer-inner"><div><strong>PONTAL DA SERRA <span>24h</span></strong><p>Comodidade • Qualidade • Perto de você</p></div><p>Catálogo para consulta. A disponibilidade pode mudar.<br><span id="data-label">Demonstração • Fotos ilustrativas.</span></p></div></footer>
+  <dialog id="product-dialog" aria-labelledby="detail-title"><button class="close" data-close aria-label="Fechar detalhes">×</button><div id="product-detail"></div></dialog>
+  <dialog id="list-dialog" class="list-dialog" aria-labelledby="list-title"><button class="close" data-close aria-label="Fechar lista">×</button><span class="eyebrow">ANTES DE IR AO MERCADO</span><h2 id="list-title">Tem o que eu preciso?</h2><p class="muted">Sua lista fica salva somente neste aparelho.</p><div id="list-summary" class="list-summary" role="status"></div><form id="list-search-form"><label for="list-search">Adicionar à lista</label><div class="inline-search"><input id="list-search" type="search" placeholder="Digite um produto…" autocomplete="off"><button class="primary" type="submit">Buscar</button></div></form><div id="list-suggestions" class="suggestions" aria-live="polite"></div><div id="list-items"></div><p class="list-footnote">Itens disponíveis não ficam reservados. Confira novamente ao visitar o mercado.</p><button id="clear-list" class="text-button danger">Limpar lista</button></dialog>
+  <dialog id="install-dialog" aria-labelledby="install-title"><button class="close" data-close aria-label="Fechar instruções">×</button><h2 id="install-title">Leve o Pontal com você</h2><p><strong>No iPhone ou iPad:</strong> abra no Safari, toque em Compartilhar e em “Adicionar à Tela de Início”.</p><p><strong>No Android ou computador:</strong> no menu do navegador, procure “Instalar aplicativo” ou “Adicionar à tela inicial”.</p><p class="muted">A instalação exige que o catálogo esteja publicado em HTTPS. A opção depende do navegador. Após a primeira visita completa, os produtos de demonstração também podem ser consultados offline.</p></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="notice">Ative o JavaScript no navegador para consultar o catálogo.</p></noscript>
+</body></html>
